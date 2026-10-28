@@ -1,0 +1,680 @@
+# До обновления
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"hw2-app","namespace":"homework-2"},"spec":{"minReadySeconds":5,"replicas":3,"selector":{"matchLabels":{"app":"hw2-app"}},"strategy":{"rollingUpdate":{"maxSurge":1,"maxUnavailable":0},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"app":"hw2-app"}},"spec":{"containers":[{"env":[{"name":"POD_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}}],"envFrom":[{"configMapRef":{"name":"hw2-config"}}],"image":"localhost:5001/kiselev-homework:hw2-v1","imagePullPolicy":"IfNotPresent","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/live","port":"http"},"periodSeconds":2,"timeoutSeconds":1},"name":"web","ports":[{"containerPort":8080,"name":"http"}],"readinessProbe":{"failureThreshold":1,"httpGet":{"path":"/ready","port":"http"},"periodSeconds":2,"timeoutSeconds":1},"resources":{"limits":{"cpu":"500m","ephemeral-storage":"256Mi","memory":"256Mi"},"requests":{"cpu":"100m","ephemeral-storage":"64Mi","memory":"64Mi"}},"startupProbe":{"failureThreshold":30,"httpGet":{"path":"/live","port":"http"},"periodSeconds":2,"timeoutSeconds":1}}]}}}}
+  creationTimestamp: "2026-10-28T17:22:09Z"
+  generation: 1
+  name: hw2-app
+  namespace: homework-2
+  resourceVersion: "171351"
+  uid: 75b1570e-547a-4395-951c-3a63f32751d8
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: hw2-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: hw2-app
+    spec:
+      containers:
+      - env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        envFrom:
+        - configMapRef:
+            name: hw2-config
+        image: localhost:5001/kiselev-homework:hw2-v1
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /live
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: web
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 1
+          httpGet:
+            path: /ready
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 500m
+            ephemeral-storage: 256Mi
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            ephemeral-storage: 64Mi
+            memory: 64Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /live
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2026-10-28T17:22:09Z"
+    lastUpdateTime: "2026-10-28T17:22:31Z"
+    message: ReplicaSet "hw2-app-7f75bc9cb7" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2026-10-28T17:25:37Z"
+    lastUpdateTime: "2026-10-28T17:25:37Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 1
+  readyReplicas: 3
+  replicas: 3
+  terminatingReplicas: 0
+  updatedReplicas: 3
+---
+# Обновление 1
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "2"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"hw2-app","namespace":"homework-2"},"spec":{"minReadySeconds":5,"replicas":3,"selector":{"matchLabels":{"app":"hw2-app"}},"strategy":{"rollingUpdate":{"maxSurge":1,"maxUnavailable":0},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"app":"hw2-app"}},"spec":{"containers":[{"env":[{"name":"POD_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}}],"envFrom":[{"configMapRef":{"name":"hw2-config"}}],"image":"localhost:5001/kiselev-homework:hw2-v2","imagePullPolicy":"IfNotPresent","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/live","port":"http"},"periodSeconds":2,"timeoutSeconds":1},"name":"web","ports":[{"containerPort":8080,"name":"http"}],"readinessProbe":{"failureThreshold":1,"httpGet":{"path":"/ready","port":"http"},"periodSeconds":2,"timeoutSeconds":1},"resources":{"limits":{"cpu":"500m","ephemeral-storage":"256Mi","memory":"256Mi"},"requests":{"cpu":"100m","ephemeral-storage":"64Mi","memory":"64Mi"}},"startupProbe":{"failureThreshold":30,"httpGet":{"path":"/live","port":"http"},"periodSeconds":2,"timeoutSeconds":1}}]}}}}
+  creationTimestamp: "2026-10-28T17:22:09Z"
+  generation: 2
+  name: hw2-app
+  namespace: homework-2
+  resourceVersion: "171461"
+  uid: 75b1570e-547a-4395-951c-3a63f32751d8
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: hw2-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: hw2-app
+    spec:
+      containers:
+      - env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        envFrom:
+        - configMapRef:
+            name: hw2-config
+        image: localhost:5001/kiselev-homework:hw2-v2
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /live
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: web
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 1
+          httpGet:
+            path: /ready
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 500m
+            ephemeral-storage: 256Mi
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            ephemeral-storage: 64Mi
+            memory: 64Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /live
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2026-10-28T17:25:37Z"
+    lastUpdateTime: "2026-10-28T17:25:37Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2026-10-28T17:22:09Z"
+    lastUpdateTime: "2026-10-28T17:26:46Z"
+    message: ReplicaSet "hw2-app-7f448676d" is progressing.
+    reason: ReplicaSetUpdated
+    status: "True"
+    type: Progressing
+  observedGeneration: 2
+  readyReplicas: 3
+  replicas: 4
+  terminatingReplicas: 0
+  unavailableReplicas: 1
+  updatedReplicas: 1
+---
+# Обновление 2
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "2"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"hw2-app","namespace":"homework-2"},"spec":{"minReadySeconds":5,"replicas":3,"selector":{"matchLabels":{"app":"hw2-app"}},"strategy":{"rollingUpdate":{"maxSurge":1,"maxUnavailable":0},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"app":"hw2-app"}},"spec":{"containers":[{"env":[{"name":"POD_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}}],"envFrom":[{"configMapRef":{"name":"hw2-config"}}],"image":"localhost:5001/kiselev-homework:hw2-v2","imagePullPolicy":"IfNotPresent","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/live","port":"http"},"periodSeconds":2,"timeoutSeconds":1},"name":"web","ports":[{"containerPort":8080,"name":"http"}],"readinessProbe":{"failureThreshold":1,"httpGet":{"path":"/ready","port":"http"},"periodSeconds":2,"timeoutSeconds":1},"resources":{"limits":{"cpu":"500m","ephemeral-storage":"256Mi","memory":"256Mi"},"requests":{"cpu":"100m","ephemeral-storage":"64Mi","memory":"64Mi"}},"startupProbe":{"failureThreshold":30,"httpGet":{"path":"/live","port":"http"},"periodSeconds":2,"timeoutSeconds":1}}]}}}}
+  creationTimestamp: "2026-10-28T17:22:09Z"
+  generation: 2
+  name: hw2-app
+  namespace: homework-2
+  resourceVersion: "171534"
+  uid: 75b1570e-547a-4395-951c-3a63f32751d8
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: hw2-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: hw2-app
+    spec:
+      containers:
+      - env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        envFrom:
+        - configMapRef:
+            name: hw2-config
+        image: localhost:5001/kiselev-homework:hw2-v2
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /live
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: web
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 1
+          httpGet:
+            path: /ready
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 500m
+            ephemeral-storage: 256Mi
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            ephemeral-storage: 64Mi
+            memory: 64Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /live
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2026-10-28T17:25:37Z"
+    lastUpdateTime: "2026-10-28T17:25:37Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2026-10-28T17:22:09Z"
+    lastUpdateTime: "2026-10-28T17:27:03Z"
+    message: ReplicaSet "hw2-app-7f448676d" is progressing.
+    reason: ReplicaSetUpdated
+    status: "True"
+    type: Progressing
+  observedGeneration: 2
+  readyReplicas: 3
+  replicas: 4
+  terminatingReplicas: 0
+  unavailableReplicas: 1
+  updatedReplicas: 2
+---
+# Обновление 3
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "2"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"hw2-app","namespace":"homework-2"},"spec":{"minReadySeconds":5,"replicas":3,"selector":{"matchLabels":{"app":"hw2-app"}},"strategy":{"rollingUpdate":{"maxSurge":1,"maxUnavailable":0},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"app":"hw2-app"}},"spec":{"containers":[{"env":[{"name":"POD_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}}],"envFrom":[{"configMapRef":{"name":"hw2-config"}}],"image":"localhost:5001/kiselev-homework:hw2-v2","imagePullPolicy":"IfNotPresent","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/live","port":"http"},"periodSeconds":2,"timeoutSeconds":1},"name":"web","ports":[{"containerPort":8080,"name":"http"}],"readinessProbe":{"failureThreshold":1,"httpGet":{"path":"/ready","port":"http"},"periodSeconds":2,"timeoutSeconds":1},"resources":{"limits":{"cpu":"500m","ephemeral-storage":"256Mi","memory":"256Mi"},"requests":{"cpu":"100m","ephemeral-storage":"64Mi","memory":"64Mi"}},"startupProbe":{"failureThreshold":30,"httpGet":{"path":"/live","port":"http"},"periodSeconds":2,"timeoutSeconds":1}}]}}}}
+  creationTimestamp: "2026-10-28T17:22:09Z"
+  generation: 2
+  name: hw2-app
+  namespace: homework-2
+  resourceVersion: "171606"
+  uid: 75b1570e-547a-4395-951c-3a63f32751d8
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: hw2-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: hw2-app
+    spec:
+      containers:
+      - env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        envFrom:
+        - configMapRef:
+            name: hw2-config
+        image: localhost:5001/kiselev-homework:hw2-v2
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /live
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: web
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 1
+          httpGet:
+            path: /ready
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 500m
+            ephemeral-storage: 256Mi
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            ephemeral-storage: 64Mi
+            memory: 64Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /live
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2026-10-28T17:25:37Z"
+    lastUpdateTime: "2026-10-28T17:25:37Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2026-10-28T17:22:09Z"
+    lastUpdateTime: "2026-10-28T17:27:20Z"
+    message: ReplicaSet "hw2-app-7f448676d" is progressing.
+    reason: ReplicaSetUpdated
+    status: "True"
+    type: Progressing
+  observedGeneration: 2
+  readyReplicas: 3
+  replicas: 4
+  terminatingReplicas: 0
+  unavailableReplicas: 1
+  updatedReplicas: 3
+---
+# Обновление 4
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "2"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"hw2-app","namespace":"homework-2"},"spec":{"minReadySeconds":5,"replicas":3,"selector":{"matchLabels":{"app":"hw2-app"}},"strategy":{"rollingUpdate":{"maxSurge":1,"maxUnavailable":0},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"app":"hw2-app"}},"spec":{"containers":[{"env":[{"name":"POD_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}}],"envFrom":[{"configMapRef":{"name":"hw2-config"}}],"image":"localhost:5001/kiselev-homework:hw2-v2","imagePullPolicy":"IfNotPresent","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/live","port":"http"},"periodSeconds":2,"timeoutSeconds":1},"name":"web","ports":[{"containerPort":8080,"name":"http"}],"readinessProbe":{"failureThreshold":1,"httpGet":{"path":"/ready","port":"http"},"periodSeconds":2,"timeoutSeconds":1},"resources":{"limits":{"cpu":"500m","ephemeral-storage":"256Mi","memory":"256Mi"},"requests":{"cpu":"100m","ephemeral-storage":"64Mi","memory":"64Mi"}},"startupProbe":{"failureThreshold":30,"httpGet":{"path":"/live","port":"http"},"periodSeconds":2,"timeoutSeconds":1}}]}}}}
+  creationTimestamp: "2026-10-28T17:22:09Z"
+  generation: 2
+  name: hw2-app
+  namespace: homework-2
+  resourceVersion: "171666"
+  uid: 75b1570e-547a-4395-951c-3a63f32751d8
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: hw2-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: hw2-app
+    spec:
+      containers:
+      - env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        envFrom:
+        - configMapRef:
+            name: hw2-config
+        image: localhost:5001/kiselev-homework:hw2-v2
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /live
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: web
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 1
+          httpGet:
+            path: /ready
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 500m
+            ephemeral-storage: 256Mi
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            ephemeral-storage: 64Mi
+            memory: 64Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /live
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2026-10-28T17:25:37Z"
+    lastUpdateTime: "2026-10-28T17:25:37Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2026-10-28T17:22:09Z"
+    lastUpdateTime: "2026-10-28T17:27:37Z"
+    message: ReplicaSet "hw2-app-7f448676d" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 2
+  readyReplicas: 3
+  replicas: 3
+  terminatingReplicas: 0
+  updatedReplicas: 3
+---
+# После обновления
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "2"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"hw2-app","namespace":"homework-2"},"spec":{"minReadySeconds":5,"replicas":3,"selector":{"matchLabels":{"app":"hw2-app"}},"strategy":{"rollingUpdate":{"maxSurge":1,"maxUnavailable":0},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"app":"hw2-app"}},"spec":{"containers":[{"env":[{"name":"POD_NAME","valueFrom":{"fieldRef":{"fieldPath":"metadata.name"}}}],"envFrom":[{"configMapRef":{"name":"hw2-config"}}],"image":"localhost:5001/kiselev-homework:hw2-v2","imagePullPolicy":"IfNotPresent","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/live","port":"http"},"periodSeconds":2,"timeoutSeconds":1},"name":"web","ports":[{"containerPort":8080,"name":"http"}],"readinessProbe":{"failureThreshold":1,"httpGet":{"path":"/ready","port":"http"},"periodSeconds":2,"timeoutSeconds":1},"resources":{"limits":{"cpu":"500m","ephemeral-storage":"256Mi","memory":"256Mi"},"requests":{"cpu":"100m","ephemeral-storage":"64Mi","memory":"64Mi"}},"startupProbe":{"failureThreshold":30,"httpGet":{"path":"/live","port":"http"},"periodSeconds":2,"timeoutSeconds":1}}]}}}}
+  creationTimestamp: "2026-10-28T17:22:09Z"
+  generation: 2
+  name: hw2-app
+  namespace: homework-2
+  resourceVersion: "171666"
+  uid: 75b1570e-547a-4395-951c-3a63f32751d8
+spec:
+  minReadySeconds: 5
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: hw2-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: hw2-app
+    spec:
+      containers:
+      - env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        envFrom:
+        - configMapRef:
+            name: hw2-config
+        image: localhost:5001/kiselev-homework:hw2-v2
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /live
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: web
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 1
+          httpGet:
+            path: /ready
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 500m
+            ephemeral-storage: 256Mi
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            ephemeral-storage: 64Mi
+            memory: 64Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /live
+            port: http
+            scheme: HTTP
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2026-10-28T17:25:37Z"
+    lastUpdateTime: "2026-10-28T17:25:37Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2026-10-28T17:22:09Z"
+    lastUpdateTime: "2026-10-28T17:27:37Z"
+    message: ReplicaSet "hw2-app-7f448676d" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 2
+  readyReplicas: 3
+  replicas: 3
+  terminatingReplicas: 0
+  updatedReplicas: 3

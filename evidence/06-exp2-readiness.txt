@@ -1,0 +1,98 @@
+HTTP
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/not-ready
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 28 Oct 2026 17:24:54 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+"readiness disabled"
+
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/ready
+HTTP/1.1 503 Service Unavailable
+Content-Length: 0
+Date: Wed, 28 Oct 2026 17:24:54 GMT
+Server: Kestrel
+
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/live
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 28 Oct 2026 17:24:54 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+"live"
+
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 28 Oct 2026 17:24:54 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+{"message":"Домашнее задание 2 — Kubernetes probes","author":"Киселев Григорий Александрович","environment":"дз","tokenConfigured":false,"machineName":"hw2-app-7f75bc9cb7-7dpvb","appVersion":"hw2-v1"}
+
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/ready-again
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 28 Oct 2026 17:25:30 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+"readiness restored; initial startup delay still applies"
+
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/ready
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 28 Oct 2026 17:25:30 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+"ready"
+
+
+
+До отказа
+
+NAME  UID  IP  READY  RESTARTS  RS  IMAGE
+hw2-app-7f75bc9cb7-7dpvb  12f7a072-bb90-4fee-b76b-8c93a9e7f2da  10.244.0.6  1/1  1  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-nchw5  c5ea012a-6256-4fd3-b9be-359a7b3f3972  10.244.0.5  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-zfz66  7ecd8c21-0b6a-43fa-b291-069e249515ea  10.244.0.7  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+
+EndpointSlice
+POD  IP  READY
+hw2-app-7f75bc9cb7-7dpvb  10.244.0.6  true
+hw2-app-7f75bc9cb7-nchw5  10.244.0.5  true
+hw2-app-7f75bc9cb7-zfz66  10.244.0.7  true
+
+Readiness выключена
+
+NAME  UID  IP  READY  RESTARTS  RS  IMAGE
+hw2-app-7f75bc9cb7-7dpvb  12f7a072-bb90-4fee-b76b-8c93a9e7f2da  10.244.0.6  0/1  1  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-nchw5  c5ea012a-6256-4fd3-b9be-359a7b3f3972  10.244.0.5  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-zfz66  7ecd8c21-0b6a-43fa-b291-069e249515ea  10.244.0.7  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+
+EndpointSlice
+POD  IP  READY
+hw2-app-7f75bc9cb7-7dpvb  10.244.0.6  false
+hw2-app-7f75bc9cb7-nchw5  10.244.0.5  true
+hw2-app-7f75bc9cb7-zfz66  10.244.0.7  true
+
+После восстановления
+
+NAME  UID  IP  READY  RESTARTS  RS  IMAGE
+hw2-app-7f75bc9cb7-7dpvb  12f7a072-bb90-4fee-b76b-8c93a9e7f2da  10.244.0.6  1/1  1  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-nchw5  c5ea012a-6256-4fd3-b9be-359a7b3f3972  10.244.0.5  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-zfz66  7ecd8c21-0b6a-43fa-b291-069e249515ea  10.244.0.7  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+
+EndpointSlice
+POD  IP  READY
+hw2-app-7f75bc9cb7-7dpvb  10.244.0.6  true
+hw2-app-7f75bc9cb7-nchw5  10.244.0.5  true
+hw2-app-7f75bc9cb7-zfz66  10.244.0.7  true

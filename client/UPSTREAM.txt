@@ -1,0 +1,2 @@
+https://gitflic.ru/project/fiit-devops/client.git
+Commit: 52a579e0218c5630e02178d80f08801c1bd5ee1c

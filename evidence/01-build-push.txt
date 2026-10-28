@@ -1,0 +1,130 @@
+Выдержки из prepare.log и commands.log.
+
+$ docker build --build-arg APP_VERSION=hw2-v1 -t localhost:5001/kiselev-homework:hw2-v1 .
+$ docker push localhost:5001/kiselev-homework:hw2-v1
+The push refers to repository [localhost:5001/kiselev-homework]
+aa37eb26c52c: Waiting
+9c61031fb43f: Waiting
+44136fa355b3: Waiting
+7a48b8f0e5c7: Waiting
+44136fa355b3: Waiting
+7a48b8f0e5c7: Waiting
+aa37eb26c52c: Waiting
+9c61031fb43f: Waiting
+aa37eb26c52c: Waiting
+9c61031fb43f: Waiting
+44136fa355b3: Waiting
+7a48b8f0e5c7: Waiting
+aa37eb26c52c: Waiting
+9c61031fb43f: Waiting
+44136fa355b3: Waiting
+7a48b8f0e5c7: Waiting
+aa37eb26c52c: Waiting
+9c61031fb43f: Waiting
+44136fa355b3: Waiting
+7a48b8f0e5c7: Waiting
+aa37eb26c52c: Waiting
+9c61031fb43f: Waiting
+44136fa355b3: Waiting
+7a48b8f0e5c7: Waiting
+9c61031fb43f: Waiting
+44136fa355b3: Waiting
+7a48b8f0e5c7: Waiting
+aa37eb26c52c: Waiting
+aa37eb26c52c: Waiting
+9c61031fb43f: Waiting
+44136fa355b3: Waiting
+7a48b8f0e5c7: Waiting
+44136fa355b3: Mounted from probes-web
+1f8c14bc5847: Waiting
+aa37eb26c52c: Pushed
+d12f340d58c7: Waiting
+1f8c14bc5847: Waiting
+9a6c9d3fa33d: Waiting
+9c61031fb43f: Pushed
+7a48b8f0e5c7: Pushed
+1f8c14bc5847: Pushed
+017220401ab5: Pushed
+86a78e707c2b: Pushed
+9a6c9d3fa33d: Pushed
+f3c239e1a838: Pushed
+d12f340d58c7: Pushed
+hw2-v1: digest: sha256:677cd8211dc425a62e8322b77343022a07cecad475cbef3fa0a32a10a73c2e8f size: 856
+
+$ docker build -t localhost:5001/homework-client:hw2-v1 ./client
+$ docker push localhost:5001/homework-client:hw2-v1
+The push refers to repository [localhost:5001/homework-client]
+44136fa355b3: Waiting
+b2db20b7c2e6: Waiting
+aa37eb26c52c: Waiting
+7a48b8f0e5c7: Waiting
+44136fa355b3: Waiting
+b2db20b7c2e6: Waiting
+aa37eb26c52c: Waiting
+7a48b8f0e5c7: Waiting
+b2db20b7c2e6: Waiting
+aa37eb26c52c: Waiting
+7a48b8f0e5c7: Waiting
+44136fa355b3: Waiting
+44136fa355b3: Waiting
+b2db20b7c2e6: Waiting
+aa37eb26c52c: Waiting
+7a48b8f0e5c7: Waiting
+44136fa355b3: Waiting
+b2db20b7c2e6: Waiting
+aa37eb26c52c: Waiting
+7a48b8f0e5c7: Waiting
+44136fa355b3: Waiting
+b2db20b7c2e6: Waiting
+aa37eb26c52c: Waiting
+7a48b8f0e5c7: Waiting
+f3c239e1a838: Mounted from kiselev-homework
+44136fa355b3: Mounted from probes-web
+aa37eb26c52c: Mounted from kiselev-homework
+7a48b8f0e5c7: Mounted from kiselev-homework
+1f8c14bc5847: Mounted from kiselev-homework
+d12f340d58c7: Mounted from kiselev-homework
+3771a5d55a76: Pushed
+e8c30290dcca: Pushed
+b2db20b7c2e6: Pushed
+hw2-v1: digest: sha256:86ede344b51172b223cf3b650bdc0f437d245e362d64fc48b5ee8c91c6ba559a size: 856
+
+$ docker build --build-arg APP_VERSION=hw2-v2 -t localhost:5001/kiselev-homework:hw2-v2 .
+$ docker push localhost:5001/kiselev-homework:hw2-v2
+The push refers to repository [localhost:5001/kiselev-homework]
+7a48b8f0e5c7: Waiting
+aa37eb26c52c: Waiting
+896e9f54f801: Waiting
+44136fa355b3: Waiting
+aa37eb26c52c: Waiting
+896e9f54f801: Waiting
+44136fa355b3: Waiting
+7a48b8f0e5c7: Waiting
+aa37eb26c52c: Waiting
+896e9f54f801: Waiting
+44136fa355b3: Waiting
+7a48b8f0e5c7: Waiting
+896e9f54f801: Waiting
+44136fa355b3: Waiting
+7a48b8f0e5c7: Waiting
+aa37eb26c52c: Waiting
+aa37eb26c52c: Waiting
+896e9f54f801: Waiting
+44136fa355b3: Waiting
+7a48b8f0e5c7: Waiting
+aa37eb26c52c: Waiting
+896e9f54f801: Waiting
+44136fa355b3: Waiting
+7a48b8f0e5c7: Waiting
+516a44ed8fc5: Pushed
+aa37eb26c52c: Layer already exists
+44136fa355b3: Already exists
+7a48b8f0e5c7: Layer already exists
+86a78e707c2b: Layer already exists
+896e9f54f801: Pushed
+1f8c14bc5847: Layer already exists
+d12f340d58c7: Layer already exists
+f3c239e1a838: Layer already exists
+017220401ab5: Layer already exists
+hw2-v2: digest: sha256:73e1223075ba6db5a0ea9a025caa7980355a0c9081b7ac174adfef2e40ca0c20 size: 856
+

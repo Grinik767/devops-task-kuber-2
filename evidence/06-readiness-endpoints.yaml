@@ -1,0 +1,212 @@
+# До отказа
+apiVersion: v1
+items:
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 10.244.0.6
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: hosting-lab-control-plane
+    targetRef:
+      kind: Pod
+      name: hw2-app-7f75bc9cb7-7dpvb
+      namespace: homework-2
+      uid: 12f7a072-bb90-4fee-b76b-8c93a9e7f2da
+  - addresses:
+    - 10.244.0.5
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: hosting-lab-control-plane
+    targetRef:
+      kind: Pod
+      name: hw2-app-7f75bc9cb7-nchw5
+      namespace: homework-2
+      uid: c5ea012a-6256-4fd3-b9be-359a7b3f3972
+  - addresses:
+    - 10.244.0.7
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: hosting-lab-control-plane
+    targetRef:
+      kind: Pod
+      name: hw2-app-7f75bc9cb7-zfz66
+      namespace: homework-2
+      uid: 7ecd8c21-0b6a-43fa-b291-069e249515ea
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2026-10-28T17:23:54Z"
+    creationTimestamp: "2026-10-28T17:22:09Z"
+    generateName: hw2-app-
+    generation: 9
+    labels:
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: hw2-app
+    name: hw2-app-d7nc6
+    namespace: homework-2
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: hw2-app
+      uid: 7c1450eb-b69b-493d-8b14-47575c8119b3
+    resourceVersion: "171185"
+    uid: ba1e2d59-60db-4246-ac99-60df1dda732f
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""
+---
+# Readiness выключена
+apiVersion: v1
+items:
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 10.244.0.6
+    conditions:
+      ready: false
+      serving: false
+      terminating: false
+    nodeName: hosting-lab-control-plane
+    targetRef:
+      kind: Pod
+      name: hw2-app-7f75bc9cb7-7dpvb
+      namespace: homework-2
+      uid: 12f7a072-bb90-4fee-b76b-8c93a9e7f2da
+  - addresses:
+    - 10.244.0.5
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: hosting-lab-control-plane
+    targetRef:
+      kind: Pod
+      name: hw2-app-7f75bc9cb7-nchw5
+      namespace: homework-2
+      uid: c5ea012a-6256-4fd3-b9be-359a7b3f3972
+  - addresses:
+    - 10.244.0.7
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: hosting-lab-control-plane
+    targetRef:
+      kind: Pod
+      name: hw2-app-7f75bc9cb7-zfz66
+      namespace: homework-2
+      uid: 7ecd8c21-0b6a-43fa-b291-069e249515ea
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2026-10-28T17:24:54Z"
+    creationTimestamp: "2026-10-28T17:22:09Z"
+    generateName: hw2-app-
+    generation: 10
+    labels:
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: hw2-app
+    name: hw2-app-d7nc6
+    namespace: homework-2
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: hw2-app
+      uid: 7c1450eb-b69b-493d-8b14-47575c8119b3
+    resourceVersion: "171276"
+    uid: ba1e2d59-60db-4246-ac99-60df1dda732f
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""
+---
+# После восстановления
+apiVersion: v1
+items:
+- addressType: IPv4
+  apiVersion: discovery.k8s.io/v1
+  endpoints:
+  - addresses:
+    - 10.244.0.6
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: hosting-lab-control-plane
+    targetRef:
+      kind: Pod
+      name: hw2-app-7f75bc9cb7-7dpvb
+      namespace: homework-2
+      uid: 12f7a072-bb90-4fee-b76b-8c93a9e7f2da
+  - addresses:
+    - 10.244.0.5
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: hosting-lab-control-plane
+    targetRef:
+      kind: Pod
+      name: hw2-app-7f75bc9cb7-nchw5
+      namespace: homework-2
+      uid: c5ea012a-6256-4fd3-b9be-359a7b3f3972
+  - addresses:
+    - 10.244.0.7
+    conditions:
+      ready: true
+      serving: true
+      terminating: false
+    nodeName: hosting-lab-control-plane
+    targetRef:
+      kind: Pod
+      name: hw2-app-7f75bc9cb7-zfz66
+      namespace: homework-2
+      uid: 7ecd8c21-0b6a-43fa-b291-069e249515ea
+  kind: EndpointSlice
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2026-10-28T17:25:32Z"
+    creationTimestamp: "2026-10-28T17:22:09Z"
+    generateName: hw2-app-
+    generation: 11
+    labels:
+      endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+      kubernetes.io/service-name: hw2-app
+    name: hw2-app-d7nc6
+    namespace: homework-2
+    ownerReferences:
+    - apiVersion: v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Service
+      name: hw2-app
+      uid: 7c1450eb-b69b-493d-8b14-47575c8119b3
+    resourceVersion: "171343"
+    uid: ba1e2d59-60db-4246-ac99-60df1dda732f
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""

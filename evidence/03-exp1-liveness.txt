@@ -1,0 +1,103 @@
+До отказа
+
+NAME  UID  IP  READY  RESTARTS  RS  IMAGE
+hw2-app-7f75bc9cb7-7dpvb  12f7a072-bb90-4fee-b76b-8c93a9e7f2da  10.244.0.6  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-nchw5  c5ea012a-6256-4fd3-b9be-359a7b3f3972  10.244.0.5  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-zfz66  7ecd8c21-0b6a-43fa-b291-069e249515ea  10.244.0.7  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+
+HTTP
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 28 Oct 2026 17:23:36 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+{"message":"Домашнее задание 2 — Kubernetes probes","author":"Киселев Григорий Александрович","environment":"дз","tokenConfigured":false,"machineName":"hw2-app-7f75bc9cb7-7dpvb","appVersion":"hw2-v1"}
+
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/live
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 28 Oct 2026 17:23:36 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+"live"
+
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/ready
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 28 Oct 2026 17:23:36 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+"ready"
+
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/you-are-death
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 28 Oct 2026 17:23:36 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+"liveness disabled until process restart"
+
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/live
+HTTP/1.1 503 Service Unavailable
+Content-Length: 0
+Date: Wed, 28 Oct 2026 17:23:36 GMT
+Server: Kestrel
+
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/live
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 28 Oct 2026 17:24:00 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+"live"
+
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 28 Oct 2026 17:24:28 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+{"message":"Домашнее задание 2 — Kubernetes probes","author":"Киселев Григорий Александрович","environment":"дз","tokenConfigured":false,"machineName":"hw2-app-7f75bc9cb7-7dpvb","appVersion":"hw2-v1"}
+
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/live
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 28 Oct 2026 17:24:28 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+"live"
+
+
+$ curl --max-time 5 -sS -i http://127.0.0.1:8082/ready
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 28 Oct 2026 17:24:28 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+"ready"
+
+
+
+После восстановления
+
+NAME  UID  IP  READY  RESTARTS  RS  IMAGE
+hw2-app-7f75bc9cb7-7dpvb  12f7a072-bb90-4fee-b76b-8c93a9e7f2da  10.244.0.6  1/1  1  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-nchw5  c5ea012a-6256-4fd3-b9be-359a7b3f3972  10.244.0.5  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-zfz66  7ecd8c21-0b6a-43fa-b291-069e249515ea  10.244.0.7  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1

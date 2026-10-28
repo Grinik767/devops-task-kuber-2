@@ -1,0 +1,208 @@
+До обновления
+
+replicas  updatedReplicas  availableReplicas
+3  3  3
+
+RS  DESIRED  CURRENT  READY
+hw2-app-7f75bc9cb7  3  3  3
+
+NAME  UID  IP  READY  RESTARTS  RS  IMAGE
+hw2-app-7f75bc9cb7-7dpvb  12f7a072-bb90-4fee-b76b-8c93a9e7f2da  10.244.0.6  1/1  1  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-nchw5  c5ea012a-6256-4fd3-b9be-359a7b3f3972  10.244.0.5  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-zfz66  7ecd8c21-0b6a-43fa-b291-069e249515ea  10.244.0.7  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+
+Обновление, снимок 1
+
+replicas  updatedReplicas  availableReplicas
+4  1  3
+
+RS  DESIRED  CURRENT  READY
+hw2-app-7f448676d  1  1  0
+hw2-app-7f75bc9cb7  3  3  3
+
+NAME  UID  IP  READY  RESTARTS  RS  IMAGE
+hw2-app-7f448676d-77sqs  ec9ca207-258f-426b-ba5e-654466cb7009  10.244.0.9  0/1  0  hw2-app-7f448676d  localhost:5001/kiselev-homework:hw2-v2
+hw2-app-7f75bc9cb7-7dpvb  12f7a072-bb90-4fee-b76b-8c93a9e7f2da  10.244.0.6  1/1  1  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-nchw5  c5ea012a-6256-4fd3-b9be-359a7b3f3972  10.244.0.5  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-zfz66  7ecd8c21-0b6a-43fa-b291-069e249515ea  10.244.0.7  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+
+Обновление, снимок 2
+
+replicas  updatedReplicas  availableReplicas
+4  2  3
+
+RS  DESIRED  CURRENT  READY
+hw2-app-7f448676d  2  2  1
+hw2-app-7f75bc9cb7  2  2  2
+
+NAME  UID  IP  READY  RESTARTS  RS  IMAGE
+hw2-app-7f448676d-77sqs  ec9ca207-258f-426b-ba5e-654466cb7009  10.244.0.9  1/1  0  hw2-app-7f448676d  localhost:5001/kiselev-homework:hw2-v2
+hw2-app-7f448676d-sc82q  46299566-28a8-4fdd-9ab1-e637f367ea18  10.244.0.10  0/1  0  hw2-app-7f448676d  localhost:5001/kiselev-homework:hw2-v2
+hw2-app-7f75bc9cb7-nchw5  c5ea012a-6256-4fd3-b9be-359a7b3f3972  10.244.0.5  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+hw2-app-7f75bc9cb7-zfz66  7ecd8c21-0b6a-43fa-b291-069e249515ea  10.244.0.7  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+
+Обновление, снимок 3
+
+replicas  updatedReplicas  availableReplicas
+4  3  3
+
+RS  DESIRED  CURRENT  READY
+hw2-app-7f448676d  3  3  2
+hw2-app-7f75bc9cb7  1  1  1
+
+NAME  UID  IP  READY  RESTARTS  RS  IMAGE
+hw2-app-7f448676d-77sqs  ec9ca207-258f-426b-ba5e-654466cb7009  10.244.0.9  1/1  0  hw2-app-7f448676d  localhost:5001/kiselev-homework:hw2-v2
+hw2-app-7f448676d-hrqml  cf8a444b-de01-475a-bee3-a8f3d759ee6b  10.244.0.11  0/1  0  hw2-app-7f448676d  localhost:5001/kiselev-homework:hw2-v2
+hw2-app-7f448676d-sc82q  46299566-28a8-4fdd-9ab1-e637f367ea18  10.244.0.10  1/1  0  hw2-app-7f448676d  localhost:5001/kiselev-homework:hw2-v2
+hw2-app-7f75bc9cb7-nchw5  c5ea012a-6256-4fd3-b9be-359a7b3f3972  10.244.0.5  1/1  0  hw2-app-7f75bc9cb7  localhost:5001/kiselev-homework:hw2-v1
+
+Обновление, снимок 4
+
+replicas  updatedReplicas  availableReplicas
+3  3  3
+
+RS  DESIRED  CURRENT  READY
+hw2-app-7f448676d  3  3  3
+hw2-app-7f75bc9cb7  0  0  0
+
+NAME  UID  IP  READY  RESTARTS  RS  IMAGE
+hw2-app-7f448676d-77sqs  ec9ca207-258f-426b-ba5e-654466cb7009  10.244.0.9  1/1  0  hw2-app-7f448676d  localhost:5001/kiselev-homework:hw2-v2
+hw2-app-7f448676d-hrqml  cf8a444b-de01-475a-bee3-a8f3d759ee6b  10.244.0.11  1/1  0  hw2-app-7f448676d  localhost:5001/kiselev-homework:hw2-v2
+hw2-app-7f448676d-sc82q  46299566-28a8-4fdd-9ab1-e637f367ea18  10.244.0.10  1/1  0  hw2-app-7f448676d  localhost:5001/kiselev-homework:hw2-v2
+
+После обновления
+
+replicas  updatedReplicas  availableReplicas
+3  3  3
+
+RS  DESIRED  CURRENT  READY
+hw2-app-7f448676d  3  3  3
+hw2-app-7f75bc9cb7  0  0  0
+
+NAME  UID  IP  READY  RESTARTS  RS  IMAGE
+hw2-app-7f448676d-77sqs  ec9ca207-258f-426b-ba5e-654466cb7009  10.244.0.9  1/1  0  hw2-app-7f448676d  localhost:5001/kiselev-homework:hw2-v2
+hw2-app-7f448676d-hrqml  cf8a444b-de01-475a-bee3-a8f3d759ee6b  10.244.0.11  1/1  0  hw2-app-7f448676d  localhost:5001/kiselev-homework:hw2-v2
+hw2-app-7f448676d-sc82q  46299566-28a8-4fdd-9ab1-e637f367ea18  10.244.0.10  1/1  0  hw2-app-7f448676d  localhost:5001/kiselev-homework:hw2-v2
+
+
+Непрерывное наблюдение за Pod
+
+NAME                       READY   STATUS    RESTARTS   AGE
+hw2-app-7f75bc9cb7-7dpvb   1/1     Running   0          59s
+hw2-app-7f75bc9cb7-nchw5   1/1     Running   0          59s
+hw2-app-7f75bc9cb7-zfz66   1/1     Running   0          59s
+hw2-app-7f75bc9cb7-7dpvb   0/1     Running   0          93s
+hw2-app-7f75bc9cb7-7dpvb   0/1     Running   1 (0s ago)   93s
+hw2-app-7f75bc9cb7-7dpvb   0/1     Running   1 (2s ago)   95s
+hw2-app-7f75bc9cb7-7dpvb   0/1     Running   1 (12s ago)   105s
+hw2-app-7f75bc9cb7-7dpvb   1/1     Running   1 (12s ago)   105s
+hw2-app-7f75bc9cb7-7dpvb   0/1     Running   1 (72s ago)   2m45s
+hw2-app-7f75bc9cb7-7dpvb   1/1     Running   1 (110s ago)   3m23s
+hw2-app-7f448676d-77sqs    0/1     Pending   0              0s
+hw2-app-7f448676d-77sqs    0/1     Pending   0              0s
+hw2-app-7f448676d-77sqs    0/1     ContainerCreating   0              0s
+hw2-app-7f448676d-77sqs    0/1     ContainerCreating   0              0s
+hw2-app-7f448676d-77sqs    0/1     Running             0              1s
+hw2-app-7f448676d-77sqs    0/1     Running             0              2s
+hw2-app-7f448676d-77sqs    0/1     Running             0              12s
+hw2-app-7f448676d-77sqs    1/1     Running             0              12s
+hw2-app-7f75bc9cb7-7dpvb   1/1     Terminating         1 (3m21s ago)   4m54s
+hw2-app-7f448676d-sc82q    0/1     Pending             0               0s
+hw2-app-7f448676d-sc82q    0/1     Pending             0               0s
+hw2-app-7f75bc9cb7-7dpvb   1/1     Terminating         1 (3m21s ago)   4m54s
+hw2-app-7f448676d-sc82q    0/1     ContainerCreating   0               0s
+hw2-app-7f75bc9cb7-7dpvb   0/1     Completed           1 (3m21s ago)   4m54s
+hw2-app-7f448676d-sc82q    0/1     ContainerCreating   0               0s
+hw2-app-7f75bc9cb7-7dpvb   0/1     Completed           1 (3m21s ago)   4m54s
+hw2-app-7f75bc9cb7-7dpvb   0/1     Completed           1 (3m21s ago)   4m54s
+hw2-app-7f448676d-sc82q    0/1     Running             0               0s
+hw2-app-7f448676d-sc82q    0/1     Running             0               2s
+hw2-app-7f448676d-sc82q    0/1     Running             0               12s
+hw2-app-7f448676d-sc82q    1/1     Running             0               12s
+hw2-app-7f75bc9cb7-zfz66   1/1     Terminating         0               5m11s
+hw2-app-7f75bc9cb7-zfz66   1/1     Terminating         0               5m11s
+hw2-app-7f448676d-hrqml    0/1     Pending             0               0s
+hw2-app-7f448676d-hrqml    0/1     Pending             0               0s
+hw2-app-7f448676d-hrqml    0/1     ContainerCreating   0               0s
+hw2-app-7f75bc9cb7-zfz66   0/1     Completed           0               5m11s
+hw2-app-7f448676d-hrqml    0/1     ContainerCreating   0               0s
+hw2-app-7f75bc9cb7-zfz66   0/1     Completed           0               5m11s
+hw2-app-7f75bc9cb7-zfz66   0/1     Completed           0               5m11s
+hw2-app-7f448676d-hrqml    0/1     Running             0               0s
+hw2-app-7f448676d-hrqml    0/1     Running             0               2s
+hw2-app-7f448676d-hrqml    0/1     Running             0               12s
+hw2-app-7f448676d-hrqml    1/1     Running             0               12s
+hw2-app-7f75bc9cb7-nchw5   1/1     Terminating         0               5m28s
+hw2-app-7f75bc9cb7-nchw5   1/1     Terminating         0               5m28s
+hw2-app-7f75bc9cb7-nchw5   0/1     Completed           0               5m28s
+hw2-app-7f75bc9cb7-nchw5   0/1     Completed           0               5m28s
+hw2-app-7f75bc9cb7-nchw5   0/1     Completed           0               5m28s
+
+
+Непрерывное наблюдение за ReplicaSet
+
+NAME                 DESIRED   CURRENT   READY   AGE
+hw2-app-7f75bc9cb7   3         3         3       59s
+hw2-app-7f75bc9cb7   3         3         2       93s
+hw2-app-7f75bc9cb7   3         3         3       105s
+hw2-app-7f75bc9cb7   3         3         3       110s
+hw2-app-7f75bc9cb7   3         3         2       2m45s
+hw2-app-7f75bc9cb7   3         3         3       3m23s
+hw2-app-7f75bc9cb7   3         3         3       3m28s
+hw2-app-7f448676d    1         0         0       0s
+hw2-app-7f448676d    1         0         0       0s
+hw2-app-7f448676d    1         1         0       0s
+hw2-app-7f448676d    1         1         1       12s
+hw2-app-7f448676d    1         1         1       17s
+hw2-app-7f75bc9cb7   2         3         3       4m54s
+hw2-app-7f448676d    2         1         1       17s
+hw2-app-7f75bc9cb7   2         3         3       4m54s
+hw2-app-7f448676d    2         1         1       17s
+hw2-app-7f75bc9cb7   2         2         2       4m54s
+hw2-app-7f448676d    2         2         1       17s
+hw2-app-7f75bc9cb7   2         2         2       4m54s
+hw2-app-7f448676d    2         2         2       29s
+hw2-app-7f448676d    2         2         2       34s
+hw2-app-7f75bc9cb7   1         2         2       5m11s
+hw2-app-7f75bc9cb7   1         2         2       5m11s
+hw2-app-7f448676d    3         2         2       34s
+hw2-app-7f75bc9cb7   1         1         1       5m11s
+hw2-app-7f448676d    3         2         2       34s
+hw2-app-7f448676d    3         3         2       34s
+hw2-app-7f75bc9cb7   1         1         1       5m11s
+hw2-app-7f448676d    3         3         3       46s
+hw2-app-7f448676d    3         3         3       51s
+hw2-app-7f75bc9cb7   0         1         1       5m28s
+hw2-app-7f75bc9cb7   0         1         1       5m28s
+hw2-app-7f75bc9cb7   0         0         0       5m28s
+hw2-app-7f75bc9cb7   0         0         0       5m28s
+
+
+Непрерывное наблюдение за Deployment
+
+NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+hw2-app   3/3     3            3           59s
+hw2-app   2/3     3            2           93s
+hw2-app   3/3     3            2           105s
+hw2-app   3/3     3            3           110s
+hw2-app   2/3     3            2           2m45s
+hw2-app   3/3     3            2           3m23s
+hw2-app   3/3     3            3           3m28s
+hw2-app   3/3     3            3           4m37s
+hw2-app   3/3     3            3           4m37s
+hw2-app   3/3     0            3           4m37s
+hw2-app   3/3     1            3           4m37s
+hw2-app   4/3     1            3           4m49s
+hw2-app   4/3     1            4           4m54s
+hw2-app   3/3     1            3           4m54s
+hw2-app   3/3     2            3           4m54s
+hw2-app   3/3     2            3           4m54s
+hw2-app   4/3     2            3           5m6s
+hw2-app   4/3     2            4           5m11s
+hw2-app   3/3     2            3           5m11s
+hw2-app   3/3     3            3           5m11s
+hw2-app   3/3     3            3           5m11s
+hw2-app   4/3     3            3           5m23s
+hw2-app   4/3     3            4           5m28s
+hw2-app   3/3     3            3           5m28s
+hw2-app   3/3     3            3           5m28s

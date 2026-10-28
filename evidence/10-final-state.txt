@@ -1,0 +1,14 @@
+NAME                      READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES                                   SELECTOR
+deployment.apps/client    1/1     1            1           7m6s    client       localhost:5001/homework-client:hw2-v1    app=client
+deployment.apps/hw2-app   3/3     3            3           7m28s   web          localhost:5001/kiselev-homework:hw2-v2   app=hw2-app
+
+NAME                          READY   STATUS    RESTARTS   AGE     IP            NODE                        NOMINATED NODE   READINESS GATES
+pod/client-6f7f8fbf74-c8w98   1/1     Running   0          7m6s    10.244.0.8    hosting-lab-control-plane   <none>           <none>
+pod/hw2-app-7f448676d-77sqs   1/1     Running   0          2m51s   10.244.0.9    hosting-lab-control-plane   <none>           <none>
+pod/hw2-app-7f448676d-hrqml   1/1     Running   0          2m17s   10.244.0.11   hosting-lab-control-plane   <none>           <none>
+pod/hw2-app-7f448676d-sc82q   1/1     Running   0          2m34s   10.244.0.10   hosting-lab-control-plane   <none>           <none>
+
+NAME                                 DESIRED   CURRENT   READY   AGE     CONTAINERS   IMAGES                                   SELECTOR
+replicaset.apps/client-6f7f8fbf74    1         1         1       7m6s    client       localhost:5001/homework-client:hw2-v1    app=client,pod-template-hash=6f7f8fbf74
+replicaset.apps/hw2-app-7f448676d    3         3         3       2m51s   web          localhost:5001/kiselev-homework:hw2-v2   app=hw2-app,pod-template-hash=7f448676d
+replicaset.apps/hw2-app-7f75bc9cb7   0         0         0       7m28s   web          localhost:5001/kiselev-homework:hw2-v1   app=hw2-app,pod-template-hash=7f75bc9cb7
